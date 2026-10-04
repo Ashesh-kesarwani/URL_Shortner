@@ -3,15 +3,17 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import {Short} from "./controllers/short.js";
-
+import {Redirect} from "./controllers/redirect.js";
 
 
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 app.post("/short", Short);
+app.get("/:route",Redirect);
 
 const port = process.env.PORT || 3000;
 
